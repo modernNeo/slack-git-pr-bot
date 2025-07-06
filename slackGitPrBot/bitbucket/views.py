@@ -1,5 +1,3 @@
-import hashlib
-import hmac
 import json
 
 from django.http import HttpResponse
@@ -23,11 +21,6 @@ class Webhook(views.APIView):
         print(2)
         enc_load = f"{json_load}".encode("utf-8")  # noqa: F841
         print(3)
-        hash_object = hmac.new(  # noqa: F841
-            secret.encode("utf-8"),
-            msg=enc_load,
-            digestmod=hashlib.sha256,
-        )
         print(4)
         print(5)
         print(6)
