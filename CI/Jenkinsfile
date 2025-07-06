@@ -25,7 +25,7 @@ export TEST_RESULT_FILE_NAME=all-unit-tests.xml;
             }
             steps {
                 withCredentials(
-                string(credentialsId: 'GITHUB_SLACK_PR_BOT_POSTGRES_PASSWORD', variable: 'GITHUB_SLACK_PR_BOT_POSTGRES_PASSWORD'),
+                [string(credentialsId: 'GITHUB_SLACK_PR_BOT_POSTGRES_PASSWORD', variable: 'GITHUB_SLACK_PR_BOT_POSTGRES_PASSWORD'),
                 string(credentialsId: 'GITHUB_SLACK_PR_BOT_POSTGRES_USER', variable: 'GITHUB_SLACK_PR_BOT_POSTGRES_USER'),
                 string(credentialsId: 'GITHUB_SLACK_PR_BOT_POSTGRES_DB', variable: 'GITHUB_SLACK_PR_BOT_POSTGRES_DB'),
                 string(credentialsId: 'GITHUB_SLACK_PR_BOT_SECRET_KEY', variable: 'GITHUB_SLACK_PR_BOT_SECRET_KEY')]) {
@@ -48,14 +48,14 @@ export SECRET_KEY="'"${GITHUB_SLACK_PR_BOT_SECRET_KEY}"'";
                 }
             }
             cleanWs(
-            cleanWhenAborted: true,
-            cleanWhenFailure: true,
-            cleanWhenNotBuilt: false,
-            cleanWhenSuccess: true,
-            cleanWhenUnstable: true,
-            deleteDirs: true,
-            disableDeferredWipeout: true
-        )
+                cleanWhenAborted: true,
+                cleanWhenFailure: true,
+                cleanWhenNotBuilt: false,
+                cleanWhenSuccess: true,
+                cleanWhenUnstable: true,
+                deleteDirs: true,
+                disableDeferredWipeout: true
+            )
         }
     }
 }
