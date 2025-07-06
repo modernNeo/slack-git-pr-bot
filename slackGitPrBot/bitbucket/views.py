@@ -20,7 +20,7 @@ class Webhook(views.APIView):
         secret = "Gweujpr3edH1cvEE"
         hash_object = hmac.new(
             secret.encode("utf-8"),
-            msg=json.loads(request.data).encode("utf-8"),
+            msg=json.load(request.data).encode("utf-8"),
             digestmod=hashlib.sha256,
         )
         calculated_signature = "sha256=" + hash_object.hexdigest()
