@@ -33,13 +33,13 @@ class Webhook(views.APIView):
         print(5)
         given_signature = request.headers['X-Hub-Signature']
         print(6)
-        if not hmac.compare_digest(calculated_signature, given_signature):
-            print(
-                "Signatures do not match\nExpected signature:"
-                f" {calculated_signature}\nActual: signature: {given_signature}"
-            )
-        else:
-            print("Signatures match")
+        # if not hmac.compare_digest(calculated_signature, given_signature):
+        #     print(
+        #         "Signatures do not match\nExpected signature:"
+        #         f" {calculated_signature}\nActual: signature: {given_signature}"
+        #     )
+        # else:
+        #     print("Signatures match")
         print(7)
         if event_key == "pullrequest:comment_created":
             ParseBitBucketWebHook.parse_comment(request.data)
