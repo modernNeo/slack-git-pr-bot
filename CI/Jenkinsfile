@@ -31,7 +31,7 @@ export TEST_RESULT_FILE_NAME=all-unit-tests.xml;
                 string(credentialsId: 'GITHUB_SLACK_PR_BOT_POSTGRES_DB', variable: 'GITHUB_SLACK_PR_BOT_POSTGRES_DB'),
                 string(credentialsId: 'GITHUB_SLACK_PR_BOT_SECRET_KEY', variable: 'GITHUB_SLACK_PR_BOT_SECRET_KEY')]) {
                     sh('''
-export COMPOSE_PROJECT_NAME=TEST_${BRANCH_NAME};
+export COMPOSE_PROJECT_NAME=PROD_${BRANCH_NAME};
 export POSTGRES_DB="'"${GITHUB_SLACK_PR_BOT_POSTGRES_DB}"'";
 export POSTGRES_USER="'"${GITHUB_SLACK_PR_BOT_POSTGRES_USER}"'";
 export POSTGRES_PASSWORD="'"${GITHUB_SLACK_PR_BOT_POSTGRES_PASSWORD}"'";

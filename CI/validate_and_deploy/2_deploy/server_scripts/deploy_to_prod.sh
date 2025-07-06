@@ -21,6 +21,9 @@ sleep 20
 
 container_failed=$(docker ps -a -f name=${prod_container_name} --format "{{.Status}}" | head -1)
 container_db_failed=$(docker ps -a -f name=${prod_container_db_name} --format "{{.Status}}" | head -1)
+echo "POSTGRES_DB=${POSTGRES_DB}" >> file.txt
+echo "POSTGRES_USER=${POSTGRES_USER}" >> file.txt
+echo "POSTGRES_PASSWORD=${POSTGRES_PASSWORD}" >> file.txt
 
 if [[ "${container_failed}" != *"Up"* ]]; then
     docker logs ${prod_container_name}
