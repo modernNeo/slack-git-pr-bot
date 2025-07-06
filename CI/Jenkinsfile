@@ -33,7 +33,7 @@ export TEST_RESULT_FILE_NAME=all-unit-tests.xml;
                     sh('''
 export COMPOSE_PROJECT_NAME=PROD_${BRANCH_NAME};
 export POSTGRES_DB="'"${GITHUB_SLACK_PR_BOT_POSTGRES_DB}"'";
-export POSTGRES_USER="'"${GITHUB_SLACK_PR_BOT_POSTGRES_USER}"'";
+export POSTGRES_USER=${GITHUB_SLACK_PR_BOT_POSTGRES_USER};
 export POSTGRES_PASSWORD="'"${GITHUB_SLACK_PR_BOT_POSTGRES_PASSWORD}"'";
 export SECRET_KEY="'"${GITHUB_SLACK_PR_BOT_SECRET_KEY}"'";
 ./CI/validate_and_deploy/2_deploy/server_scripts/deploy_to_prod.sh;
