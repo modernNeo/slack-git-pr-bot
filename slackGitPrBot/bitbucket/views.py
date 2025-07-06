@@ -18,15 +18,21 @@ class Webhook(views.APIView):
         print(f"X-Event-Key={event_key}")
         print(json.dumps(request.data, indent=4))
         secret = "Gweujpr3edH1cvEE"
+        print(1)
         json_load = json.dumps(request.data)
+        print(2)
         enc_load = f"{json_load}".encode("utf-8")
+        print(3)
         hash_object = hmac.new(
             secret.encode("utf-8"),
             msg=enc_load,
             digestmod=hashlib.sha256,
         )
+        print(4)
         calculated_signature = "sha256=" + hash_object.hexdigest()
+        print(5)
         given_signature = request.headers['X-Hub-Signature']
+        print(6)
         if not hmac.compare_digest(calculated_signature, given_signature):
             print(
                 "Signatures do not match\nExpected signature:"
@@ -34,6 +40,7 @@ class Webhook(views.APIView):
             )
         else:
             print("Signatures match")
+        print(7)
         if event_key == "pullrequest:comment_created":
             ParseBitBucketWebHook.parse_comment(request.data)
         elif event_key == 'pullrequest:changes_request_created':
