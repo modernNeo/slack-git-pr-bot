@@ -19,8 +19,7 @@ class Webhook(views.APIView):
         print(3)
         print(4)
         print(5)
-        print(6)
-        print(1)
+        print(6, flush=True)
         # if event_key == "pullrequest:comment_created":
         #     ParseBitBucketWebHook.parse_comment(request.data)
         # elif event_key == 'pullrequest:changes_request_created':
