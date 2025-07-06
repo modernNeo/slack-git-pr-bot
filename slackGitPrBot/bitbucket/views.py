@@ -23,13 +23,13 @@ class Webhook(views.APIView):
         print(2)
         enc_load = f"{json_load}".encode("utf-8")
         print(3)
-        hash_object = hmac.new(
+        hash_object = hmac.new(  # noqa: F841
             secret.encode("utf-8"),
             msg=enc_load,
             digestmod=hashlib.sha256,
         )
         print(4)
-        calculated_signature = "sha256=" + hash_object.hexdigest()  # noqa: F841
+        # calculated_signature = "sha256=" + hash_object.hexdigest()  # noqa: F841
         print(5)
         given_signature = request.headers['X-Hub-Signature']  # noqa: F841
         print(6)
