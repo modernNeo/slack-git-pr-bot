@@ -99,7 +99,6 @@ HTTP_AND_FQDN = f"https://{HOST}" if PROD_ENV else f"http://{HOST}"
 CSRF_TRUSTED_ORIGINS = [HTTP_AND_FQDN]
 
 
-
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
