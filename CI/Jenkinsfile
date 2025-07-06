@@ -1,0 +1,55 @@
+pipeline {
+    agent any
+    options {
+        disableConcurrentBuilds()
+        buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
+    }
+    stages {
+        stage('Validate Formatting') {
+            steps {
+                sh('''
+export DOCKER_TEST_IMAGE=\${COMPOSE_PROJECT_NAME}__git_slack_pr_bot_pytest;
+export DOCKER_TEST_CONTAINER=\${COMPOSE_PROJECT_NAME}_pytest;
+export LOCALHOST_TEST_DIR=test_results;
+export LOCALHOST_TEST_DIR=${WORKSPACE}/\${LOCALHOST_TEST_DIR};
+export CONTAINER_HOME_DIR=/usr/src/app;
+export CONTAINER_TEST_DIR=\${CONTAINER_HOME_DIR}/tests;
+export TEST_RESULT_FILE_NAME=all-unit-tests.xml;
+./CI/validate_and_deploy/1_validate/validate_formatting.sh;
+                ''')
+            }
+        }
+        stage('Deploy to PROD Guild') {
+            when {
+                branch 'master'
+            }
+            steps {
+                withCredentials(
+                string(credentialsId: 'POSTGRES_PASSWORD', variable: 'POSTGRES_PASSWORD'),
+                string(credentialsId: 'WALL_E_DB_PASSWORD', variable: 'WALL_E_DB_PASSWORD')]) {
+                    sh('''
+./CI/validate_and_deploy/2_deploy/server_scripts/deploy_to_prod.sh;
+                    ''')
+                }
+            }
+        }
+    }
+    post {
+        always {
+            script {
+                if (fileExists('test_results/all-unit-tests.xml')){
+                    junit 'test_results/all-unit-tests.xml'
+                }
+            }
+            cleanWs(
+            cleanWhenAborted: true,
+            cleanWhenFailure: true,
+            cleanWhenNotBuilt: false,
+            cleanWhenSuccess: true,
+            cleanWhenUnstable: true,
+            deleteDirs: true,
+            disableDeferredWipeout: true
+        )
+        }
+    }
+}
