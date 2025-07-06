@@ -49,15 +49,15 @@ export SECRET_KEY="'"${GITHUB_SLACK_PR_BOT_SECRET_KEY}"'";
                     junit 'test_results/all-unit-tests.xml'
                 }
             }
-//             cleanWs(
-//                 cleanWhenAborted: true,
-//                 cleanWhenFailure: true,
-//                 cleanWhenNotBuilt: false,
-//                 cleanWhenSuccess: true,
-//                 cleanWhenUnstable: true,
-//                 deleteDirs: true,
-//                 disableDeferredWipeout: true
-//             )
+            cleanWs(
+                cleanWhenAborted: true,
+                cleanWhenFailure: true,
+                cleanWhenNotBuilt: false,
+                cleanWhenSuccess: true,
+                cleanWhenUnstable: true,
+                deleteDirs: true,
+                disableDeferredWipeout: true
+            )
         }
     }
 }
