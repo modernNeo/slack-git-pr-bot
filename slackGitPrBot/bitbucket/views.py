@@ -14,7 +14,7 @@ class Webhook(views.APIView):
         event_key = request.headers['X-Event-Key']
         print(json.dumps({**request.headers}, indent=4))
         print(f"X-Event-Key={event_key}")
-        print(json.dumps(request.data, indent=4))
+        # print(json.dumps(request.data, indent=4))
         secret = "Gweujpr3edH1cvEE"  # noqa: F841
         print(1)
         print(2)
