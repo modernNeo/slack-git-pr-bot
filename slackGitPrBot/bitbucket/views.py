@@ -29,5 +29,3 @@ class Webhook(views.APIView):
         elif event_key == 'pullrequest:approved':
             pass
         return HttpResponse("Hello, world. You're at the bitbucket webhook index.")
-
-
