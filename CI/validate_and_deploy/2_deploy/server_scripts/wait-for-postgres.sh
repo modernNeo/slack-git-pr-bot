@@ -13,5 +13,5 @@ done
 
 >&2 echo "Postgres is up - executing command"
 
-exec $cmd
+python -u manage.py runserver 0.0.0.0:8000
 
