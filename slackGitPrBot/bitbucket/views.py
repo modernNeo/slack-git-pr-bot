@@ -1,5 +1,5 @@
-import hashlib
-import hmac
+import hashlib  # noqa: F401
+import hmac  # noqa: F401
 import json
 
 from django.http import HttpResponse
