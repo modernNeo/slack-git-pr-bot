@@ -10,5 +10,6 @@ class Webhook(views.APIView):
 
     def post(self, request):
         print(json.dumps({**request.headers}, indent=4))
+        print(f"X-Event-Key={request.headers['X-Event-Key']}")
         print(json.dumps(request.data, indent=4))
         return HttpResponse("Hello, world. You're at the bitbucket webhook index.")
