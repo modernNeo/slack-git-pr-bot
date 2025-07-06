@@ -25,7 +25,7 @@ do
 	echo "waiting for the python formatting validation to finish"
 	sleep 1
 done
-sudo docker cp ${DOCKER_TEST_CONTAINER}:${CONTAINER_TEST_DIR}/${TEST_RESULT_FILE_NAME} ${LOCALHOST_TEST_DIR}/${TEST_RESULT_FILE_NAME}
+docker cp ${DOCKER_TEST_CONTAINER}:${CONTAINER_TEST_DIR}/${TEST_RESULT_FILE_NAME} ${LOCALHOST_TEST_DIR}/${TEST_RESULT_FILE_NAME}
 
 test_container_failed=$(docker inspect ${DOCKER_TEST_CONTAINER} --format='{{.State.ExitCode}}')
 
