@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from rest_framework import views
 
-from bitbucket.ParseBitBucketWebHook import ParseBitBucketWebHook  # noqa: F841
+from bitbucket.ParseBitBucketWebHook import ParseBitBucketWebHook  # noqa: F401
 
 
 # Create your views here.
