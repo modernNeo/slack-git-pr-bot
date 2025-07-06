@@ -13,9 +13,9 @@ from bitbucket.ParseBitBucketWebHook import ParseBitBucketWebHook
 class Webhook(views.APIView):
 
     def post(self, request):
-        eventKey = request.headers['X-Event-Key']
+        event_key = request.headers['X-Event-Key']
         print(json.dumps({**request.headers}, indent=4))
-        print(f"X-Event-Key={eventKey}")
+        print(f"X-Event-Key={event_key}")
         print(json.dumps(request.data, indent=4))
         secret = "Gweujpr3edH1cvEE"
         hash_object = hmac.new(
@@ -32,10 +32,10 @@ class Webhook(views.APIView):
             )
         else:
             print("Signatures match")
-        if eventKey == "pullrequest:comment_created":
+        if event_key == "pullrequest:comment_created":
             ParseBitBucketWebHook.parse_comment(request.data)
-        elif eventKey == 'pullrequest:changes_request_created':
+        elif event_key == 'pullrequest:changes_request_created':
             pass
-        elif eventKey == 'pullrequest:approved':
+        elif event_key == 'pullrequest:approved':
             pass
         return HttpResponse("Hello, world. You're at the bitbucket webhook index.")
