@@ -1,5 +1,3 @@
-import hashlib
-import hmac
 import json
 
 from django.http import HttpResponse
