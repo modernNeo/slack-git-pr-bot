@@ -18,7 +18,7 @@ class Webhook(views.APIView):
         print(f"X-Event-Key={event_key}")
         print(json.dumps(request.data, indent=4))
         secret = "Gweujpr3edH1cvEE"
-        json_load = json.load(request.data)
+        json_load = json.dumps(request.data)
         enc_load = f"{json_load}".encode("utf-8")
         hash_object = hmac.new(
             secret.encode("utf-8"),
