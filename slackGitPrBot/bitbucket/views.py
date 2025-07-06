@@ -29,9 +29,9 @@ class Webhook(views.APIView):
             digestmod=hashlib.sha256,
         )
         print(4)
-        calculated_signature = "sha256=" + hash_object.hexdigest()
+        calculated_signature = "sha256=" + hash_object.hexdigest()  # noqa: F841
         print(5)
-        given_signature = request.headers['X-Hub-Signature']
+        given_signature = request.headers['X-Hub-Signature']  # noqa: F841
         print(6)
         # if not hmac.compare_digest(calculated_signature, given_signature):
         #     print(
