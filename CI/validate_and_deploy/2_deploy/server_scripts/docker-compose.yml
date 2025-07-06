@@ -4,6 +4,7 @@ services:  #Services that are needed for the git_slack_pr_bot app
             context: ../../../../ #Saying that all of my source files are at the root path
             dockerfile: CI/validate_and_deploy/2_deploy/server_scripts/Dockerfile
         environment:
+            - ENV
             - POSTGRES_DB
             - POSTGRES_USER
             - POSTGRES_PASSWORD
