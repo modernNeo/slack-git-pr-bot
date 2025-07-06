@@ -25,9 +25,15 @@ export TEST_RESULT_FILE_NAME=all-unit-tests.xml;
             }
             steps {
                 withCredentials(
-                string(credentialsId: 'POSTGRES_PASSWORD', variable: 'POSTGRES_PASSWORD'),
-                string(credentialsId: 'WALL_E_DB_PASSWORD', variable: 'WALL_E_DB_PASSWORD')]) {
+                string(credentialsId: 'GITHUB_SLACK_PR_BOT_POSTGRES_PASSWORD', variable: 'GITHUB_SLACK_PR_BOT_POSTGRES_PASSWORD'),
+                string(credentialsId: 'GITHUB_SLACK_PR_BOT_POSTGRES_USER', variable: 'GITHUB_SLACK_PR_BOT_POSTGRES_USER'),
+                string(credentialsId: 'GITHUB_SLACK_PR_BOT_POSTGRES_DB', variable: 'GITHUB_SLACK_PR_BOT_POSTGRES_DB'),
+                string(credentialsId: 'GITHUB_SLACK_PR_BOT_SECRET_KEY', variable: 'GITHUB_SLACK_PR_BOT_SECRET_KEY')]) {
                     sh('''
+export POSTGRES_DB="'"${GITHUB_SLACK_PR_BOT_POSTGRES_DB}"'";
+export POSTGRES_USER="'"${GITHUB_SLACK_PR_BOT_POSTGRES_USER}"'";
+export POSTGRES_PASSWORD="'"${GITHUB_SLACK_PR_BOT_POSTGRES_PASSWORD}"'";
+export SECRET_KEY="'"${GITHUB_SLACK_PR_BOT_SECRET_KEY}"'";
 ./CI/validate_and_deploy/2_deploy/server_scripts/deploy_to_prod.sh;
                     ''')
                 }

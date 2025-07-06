@@ -9,11 +9,6 @@ services:  #Services that are needed for the git_slack_pr_bot app
             - POSTGRES_USER
             - POSTGRES_PASSWORD
             - COMPOSE_PROJECT_NAME
-            - ENV
-            - PROD_HOST
-            - TO_EMAIL
-            - GMAIL_USERNAME
-            - GMAIL_PASSWORD
             - SECRET_KEY
         volumes: #volume are for hot reload
             - logs:/src/app/logs
