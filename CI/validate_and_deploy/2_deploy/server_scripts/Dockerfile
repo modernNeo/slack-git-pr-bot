@@ -14,8 +14,8 @@ COPY slackGitPrBot/slackGitPrBot slackGitPrBot
 COPY slackGitPrBot/manage.py manage.py
 COPY slackGitPrBot/requirements.txt requirements.txt
 COPY slackGitPrBot/db-requirements.txt db-requirements.txt
-COPY CI/run_docker.sh run_docker.sh
-COPY CI/wait-for-postgres.sh wait-for-postgres.sh
+COPY CI/validate_and_deploy/2_deploy/server_scripts/run_docker.sh run_docker.sh
+COPY CI/validate_and_deploy/2_deploy/server_scripts/wait-for-postgres.sh wait-for-postgres.sh
 
 RUN pip install --no-cache-dir -r requirements.txt
 RUN pip install --no-cache-dir -r db-requirements.txt
