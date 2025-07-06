@@ -7,6 +7,7 @@ set -e -o xtrace
 
 export COMPOSE_PROJECT_NAME="git_slack_pr_bot"
 export ENV="PROD";
+export PROD_HOST="git_slack_pr_bot.modernneo.com";
 
 export prod_container_name="${COMPOSE_PROJECT_NAME}_app"
 export prod_container_db_name="${COMPOSE_PROJECT_NAME}_db"

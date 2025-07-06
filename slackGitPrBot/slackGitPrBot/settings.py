@@ -73,7 +73,7 @@ WSGI_APPLICATION = 'slackGitPrBot.wsgi.application'
 PROD_ENV = os.environ.get('ENV', 'TEST') == "PROD"
 PROD_HOST = None
 if PROD_ENV:
-    # PROD_HOST = os.environ['PROD_HOST']
+    PROD_HOST = os.environ['PROD_HOST']
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
