@@ -17,9 +17,7 @@ class Webhook(views.APIView):
         print(json.dumps(request.data, indent=4))
         secret = "Gweujpr3edH1cvEE"  # noqa: F841
         print(1)
-        json_load = json.dumps(request.data)
         print(2)
-        enc_load = f"{json_load}".encode("utf-8")  # noqa: F841
         print(3)
         print(4)
         print(5)
