@@ -20,7 +20,7 @@ services:  #Services that are needed for the git_slack_pr_bot app
         networks:
             - git_slack_pr_bot_network
         ports:
-            -   "8000:8001"
+            -   "8001:8000"
 #        stdin_open: true # docker run -i
 #        tty: true        # docker run -t
     db: #declaration of the postgres container
