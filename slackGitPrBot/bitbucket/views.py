@@ -5,7 +5,7 @@ import json
 from django.http import HttpResponse
 from rest_framework import views
 
-from bitbucket.ParseBitBucketWebHook import ParseBitBucketWebHook
+# from bitbucket.ParseBitBucketWebHook import ParseBitBucketWebHook
 
 
 # Create your views here.
@@ -41,10 +41,10 @@ class Webhook(views.APIView):
         # else:
         #     print("Signatures match")
         print(7)
-        if event_key == "pullrequest:comment_created":
-            ParseBitBucketWebHook.parse_comment(request.data)
-        elif event_key == 'pullrequest:changes_request_created':
-            pass
-        elif event_key == 'pullrequest:approved':
-            pass
+        # if event_key == "pullrequest:comment_created":
+        #     ParseBitBucketWebHook.parse_comment(request.data)
+        # elif event_key == 'pullrequest:changes_request_created':
+        #     pass
+        # elif event_key == 'pullrequest:approved':
+        #     pass
         return HttpResponse("Hello, world. You're at the bitbucket webhook index.")
