@@ -8,7 +8,7 @@ class ParseBitBucketWebHook:
     @staticmethod
     def verify_request(request):
         secret = "fWvVcFJ8YR8lnUxS"
-        print(json.dumps(request.headers, separators=(',', ':'), ensure_ascii=False))
+        print(request.headers)
         modified_payload = json.dumps(request.data, separators=(',', ':'), ensure_ascii=False)
         hash_object = hmac.new(
             secret.encode("utf-8"),
