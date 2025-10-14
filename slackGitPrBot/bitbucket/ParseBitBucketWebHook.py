@@ -29,4 +29,4 @@ class ParseBitBucketWebHook:
         comment_info = payload['comment']
         comment = comment_info['content']['raw']  # noqa: F841
         comment_author_account_id = comment_info['user']['account_id']  # noqa: F841
-        parent_comment_id = comment_info['id'] # noqa: F841
+        parent_comment_id = comment_info['id']  # noqa: F841
