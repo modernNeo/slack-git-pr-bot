@@ -27,5 +27,6 @@ class ParseBitBucketWebHook:
     @staticmethod
     def parse_comment(payload):
         comment_info = payload['comment']
-        comment = comment_info['content']  # noqa: F841
-        # Gweujpr3edH1cvEE
+        comment = comment_info['content']['raw']  # noqa: F841
+        comment_author_account_id = comment_info['user']['account_id'] # account_id
+        parent_comment_id = comment_info['id']
