@@ -11,6 +11,7 @@ RUN apk add postgresql
 WORKDIR /src/app
 COPY slackGitPrBot/bitbucket bitbucket
 COPY slackGitPrBot/slackGitPrBot slackGitPrBot
+COPY slackGitPrBot/bot_logging bot_logging
 COPY slackGitPrBot/manage.py manage.py
 COPY slackGitPrBot/requirements.txt requirements.txt
 COPY slackGitPrBot/db-requirements.txt db-requirements.txt
