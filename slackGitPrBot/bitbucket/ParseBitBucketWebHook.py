@@ -17,11 +17,10 @@ class ParseBitBucketWebHook:
         calculated_signature = "sha256=" + hash_object.hexdigest()
         given_signature = request.headers['X-Hub-Signature']
         if not hmac.compare_digest(calculated_signature, given_signature):
-            print(1)
-            # raise Exception(
-            #     "Signatures do not match\nExpected signature:"
-            #     f" {calculated_signature}\nActual: signature: {given_signature}"
-            # )
+            raise Exception(
+                "Signatures do not match\nExpected signature:"
+                f" {calculated_signature}\nActual: signature: {given_signature}"
+            )
         else:
             print("Signatures match")
 
