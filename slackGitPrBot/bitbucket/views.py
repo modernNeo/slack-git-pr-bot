@@ -15,7 +15,7 @@ class Webhook(views.APIView):
 
     def post(self, request):
         logger.info(request)
-        logger.info(json.dumps(request.headers, indent=4))
+        logger.info(json.dumps({**request.headers}, indent=4))
         logger.info(json.dumps(request.data, indent=4))
         ParseBitBucketWebHook.verify_request(request)
         event_key = request.headers['X-Event-Key']
